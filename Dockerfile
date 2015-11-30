@@ -12,8 +12,7 @@ RUN apt-get update -qq && \
         rm -rf /var/lib/apt/lists/*
 
 
-RUN apt-get -y build-dep libcurl4-gnutls-dev
-RUN apt-get -y install libcurl4-gnutls-dev
+RUN apt-get -y libcurl4-openssl-dev libxml2-dev
 
 # Set default CRAN repo
 RUN echo 'options("repos"="http://cran.rstudio.com")' >> /usr/lib/R/etc/Rprofile.site
