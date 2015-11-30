@@ -7,13 +7,9 @@ USER root
 # Retrieve recent R binary from CRAN
 RUN apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --force-yes \
-        libzmq3-dev r-base-core r-recommended r-base r-base-dev && \
+        libzmq3-dev r-base-core r-recommended r-base r-base-dev libcurl4-openssl-dev && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
-
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --force-yes \
-      libcurl4-openssl-dev
 
 
 # Set default CRAN repo
