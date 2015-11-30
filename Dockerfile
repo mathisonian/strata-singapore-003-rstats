@@ -14,5 +14,10 @@ RUN apt-get update -qq && \
 # Set default CRAN repo
 RUN echo 'options("repos"="http://cran.rstudio.com")' >> /usr/lib/R/etc/Rprofile.site
 
+USER main
+
+RUN mkdir $HOME/r-libs
+ENV R_LIBS $HOME/r-libs
+
 # Install IRkernel
 RUN Rscript -e "install.packages(c('rzmq','repr','IRkernel','IRdisplay'), repos = c('http://irkernel.github.io/', getOption('repos')))" -e "IRkernel::installspec()"
