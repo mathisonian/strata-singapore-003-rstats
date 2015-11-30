@@ -13,7 +13,7 @@ RUN apt-get update -qq && \
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --force-yes \
-      libcurl4-openssl-dev libxml2-dev
+      curl
 
 
 # Set default CRAN repo
