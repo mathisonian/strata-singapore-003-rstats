@@ -5,9 +5,13 @@ MAINTAINER Matthew Conlen <mc@mathisonian.com>
 USER root
 
 # Retrieve recent R binary from CRAN
-RUN apt-get install r-base r-base-dev
-
-USER main
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 && \
+    echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/">>/etc/apt/sources.list && \
+    apt-get update -qq && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -yq --force-yes \
+        r-base r-base-dev && \
+        apt-get clean && \
+        rm -rf /var/lib/apt/lists/*
 
 # Set default CRAN repo
 RUN echo 'options("repos"="http://cran.rstudio.com")' >> /usr/lib/R/etc/Rprofile.site
