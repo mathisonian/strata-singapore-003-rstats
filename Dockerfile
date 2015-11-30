@@ -5,11 +5,9 @@ MAINTAINER Matthew Conlen <mc@mathisonian.com>
 USER root
 
 # Retrieve recent R binary from CRAN
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 && \
-    echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/">>/etc/apt/sources.list && \
-    apt-get update -qq && \
+RUN apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --force-yes \
-        r-base r-base-dev && \
+        libzmq3-dev r-base-core r-recommended r-base r-base-dev && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
