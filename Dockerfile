@@ -13,7 +13,7 @@ RUN apt-get update -qq && \
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --force-yes \
-      curl
+      curl libcurl-dev
 
 
 # Set default CRAN repo
