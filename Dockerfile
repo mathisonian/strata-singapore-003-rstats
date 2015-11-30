@@ -21,4 +21,4 @@ ENV R_LIBS $HOME/r-libs
 
 # Install IRkernel
 RUN Rscript -e "install.packages(c('rzmq','repr','IRkernel','IRdisplay'), repos = c('http://irkernel.github.io/', getOption('repos')))" -e "IRkernel::installspec()"
-RUN Rscript -e "install.packages('devtools', repos='http://cran.rstudio.com/')"
+RUN R CMD INSTALL devtools
